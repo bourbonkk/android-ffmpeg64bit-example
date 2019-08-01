@@ -2,7 +2,12 @@
 android ffmpeg example source code 64 bit support
 
 
-This is how to use ffmpeg 64bit using this source code : https://github.com/adrielcafe/AndroidAudioConverter
+How to use ffmpeg 64bit
+
+
+I used this source code.
+https://github.com/adrielcafe/AndroidAudioConverter
+
 
 Supported formats:
 
