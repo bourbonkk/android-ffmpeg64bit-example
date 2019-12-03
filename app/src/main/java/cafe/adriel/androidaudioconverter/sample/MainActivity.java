@@ -12,8 +12,6 @@ import android.widget.Toast;
 import java.io.File;
 
 import cafe.adriel.androidaudioconverter.AndroidAudioConverter;
-import cafe.adriel.androidaudioconverter.callback.IConvertCallback;
-import cafe.adriel.androidaudioconverter.model.AudioFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,23 +38,26 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", Environment.getExternalStorageDirectory().getAbsolutePath() + "/audio_test");
         File wavFile = new File(Environment.getExternalStorageDirectory(), "/audio_test/recorded_audio.wav");
         Log.e("test", wavFile.getAbsolutePath());
-        IConvertCallback callback = new IConvertCallback() {
-            @Override
-            public void onSuccess(File convertedFile) {
-                Toast.makeText(MainActivity.this, "SUCCESS: " + convertedFile.getPath(), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Exception error) {
-                Toast.makeText(MainActivity.this, "ERROR: " + error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        };
+//        IConvertCallback callback = new IConvertCallback() {
+//            @Override
+//            public void onSuccess(File convertedFile) {
+//                Toast.makeText(MainActivity.this, "SUCCESS: " + convertedFile.getPath(), Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Exception error) {
+//                Toast.makeText(MainActivity.this, "ERROR: " + error.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        };
         Toast.makeText(this, "Converting audio file...", Toast.LENGTH_SHORT).show();
-        AndroidAudioConverter.with(this)
-                .setFile(wavFile)
-                .setFormat(AudioFormat.MP3)
-                .setCallback(callback)
-                .convert();
+
+        AndroidAudioConverter.load(this, Environment.getExternalStorageDirectory() + "/audio_test/recorded_audio.wav");
+
+//        AndroidAudioConverter.with(this)
+//                .setFile(wavFile)
+//                .setFormat(AudioFormat.MP3)
+//                .setCallback(callback)
+//                .convert();
     }
 
 }
